@@ -3,6 +3,7 @@ import network
 import machine
 import ntptime
 import utime
+import json
 
 from constants import SSID, PSWD
 
@@ -27,16 +28,17 @@ def wifi_disconnect(station_interface: network.WLAN) -> None:
 
 class TimeUpdater:
 
-    def __init__(self, time_zone = 2):
+    def __init__(self, rtc: RTC, time_zone = 2):
         self.time_zone = time_zone
         self.completed = False
+        self.rtc = rtc
 
-    def update(self, rtc: RTC) -> None:
+    def update(self) -> None:
         if not self.completed:
             ntptime.settime()
             time_tuple = utime.localtime(utime.mktime(utime.localtime()) + self.time_zone * 3600)
             time_tuple = time_tuple[0:3] + (0,) + time_tuple[3:6] + (0,)
-            rtc.datetime(time_tuple)
+            self.rtc.datetime(time_tuple)
             self.completed = True
 
 
@@ -54,12 +56,68 @@ def set_leds_color(leds: NeoPixel, color_array: bytearray) -> None:
     leds.write()
 
 
-# from neopixel import NeoPixel
-# from machine import Pin
-# pin23 = Pin(23, Pin.OUT)
-# led_strip = NeoPixel(pin23, 1)
-# led_strip[0] = (255, 255, 255)
-# lead_strip.write()
+class Configuration:
+
+    def __init__(self):
+        self._filename = "config.json"
+        self.atribute_list = []
+        self.load()
+
+    def load(self):
+        """
+        Loads configuration from config.json file.
+        """
+        with open(self._filename, "r") as file_:
+            config_dict = json.load(file_)
+
+        for key, value in config_dict.items():
+            setattr(self, key, value)
+            self.atribute_list.append(key)
+
+    def save(self):
+        """
+        Saves configuration to a config.json file.
+        """
+        config_dict = {}
+        for key in self.atribute_list:
+            config_dict[key] = getattr(self, key)
+
+        with open(self._filename, "w") as file_:
+            json.dump(config_dict, file_)
+
+    def add(self, key, value):
+        """
+        Adds attribute <key> equal to <value> to <self>.
+        """
+        self.atribute_list.append(key)
+        setattr(self, key, value)
+        self.save()
+
+    def remove(self, key):
+        """
+        Removes <self>.<key> from configuration file.
+        """
+        try:
+            self.atribute_list.remove(key)
+            delattr(self, key)
+            self.save()
+        except ValueError:
+            pass
+
+    def change(self, key: str, value) -> None:
+        """
+        Changes value of attribute <self>.<key> to <value>.
+        """
+        if key not in self.atribute_list:
+            self.atribute_list.append(key)
+        setattr(self, key, value)
+        self.save()
 
 
+def get_ms_untill_alarm(wake_time, wake_period):
+    ms_to_alarm = utime.localtime()
+
+timer = machine.Timer(0)
+timer.init(10000)
+timer.deinit()
 

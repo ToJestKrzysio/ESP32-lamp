@@ -1,0 +1,7 @@
+{
+  "wake_time": {
+    "hour": 6,
+    "minute": 0
+  },
+  "wake_duration": 30
+}

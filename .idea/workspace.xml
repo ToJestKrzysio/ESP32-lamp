@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28402e77-81de-422b-a68c-1876b531d0ea" name="Changes" comment="Introduced basic functionalities">
-      <change afterPath="$PROJECT_DIR$/ESP_filestructure/constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unit_test/test_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ESP32-lamp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ESP32-lamp.iml" afterDir="false" />
+    <list default="true" id="28402e77-81de-422b-a68c-1876b531d0ea" name="Changes" comment="Main loop&#10;Basic wi-fi, RTC functionalities.">
+      <change afterPath="$PROJECT_DIR$/ESP_filestructure/LampModes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ESP_filestructure/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ESP_filestructure/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/ESP_filestructure/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ESP_filestructure/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ESP_filestructure/main.py" afterDir="false" />
@@ -156,7 +155,8 @@
       <option name="presentableId" value="Default" />
       <updated>1630137168116</updated>
       <workItem from="1630137170311" duration="5787000" />
-      <workItem from="1630151695437" duration="16507000" />
+      <workItem from="1630151695437" duration="22898000" />
+      <workItem from="1630265419205" duration="5491000" />
     </task>
     <task id="LOCAL-00001" summary="Micropython file structure">
       <created>1630137539112</created>
@@ -172,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630144526866</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Main loop&#10;Basic wi-fi, RTC functionalities.">
+      <created>1630234458708</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1630234458708</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +200,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Micropython file structure" />
     <MESSAGE value="Introduced basic functionalities" />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduced basic functionalities" />
+    <MESSAGE value="Main loop&#10;Basic wi-fi, RTC functionalities." />
+    <option name="LAST_COMMIT_MESSAGE" value="Main loop&#10;Basic wi-fi, RTC functionalities." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ESP32_lamp$fun.coverage" NAME="fun Coverage Results" MODIFIED="1630153881295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/unit_test" />
