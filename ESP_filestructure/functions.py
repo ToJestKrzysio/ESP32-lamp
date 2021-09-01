@@ -60,7 +60,7 @@ class Configuration:
 
     def __init__(self):
         self._filename = "config.json"
-        self.atribute_list = []
+        self.attribute_list = []
         self.load()
 
     def load(self):
@@ -70,16 +70,17 @@ class Configuration:
         with open(self._filename, "r") as file_:
             config_dict = json.load(file_)
 
+        self.attribute_list = []
         for key, value in config_dict.items():
             setattr(self, key, value)
-            self.atribute_list.append(key)
+            self.attribute_list.append(key)
 
     def save(self):
         """
         Saves configuration to a config.json file.
         """
         config_dict = {}
-        for key in self.atribute_list:
+        for key in self.attribute_list:
             config_dict[key] = getattr(self, key)
 
         with open(self._filename, "w") as file_:
@@ -89,7 +90,7 @@ class Configuration:
         """
         Adds attribute <key> equal to <value> to <self>.
         """
-        self.atribute_list.append(key)
+        self.attribute_list.append(key)
         setattr(self, key, value)
         self.save()
 
@@ -98,7 +99,7 @@ class Configuration:
         Removes <self>.<key> from configuration file.
         """
         try:
-            self.atribute_list.remove(key)
+            self.attribute_list.remove(key)
             delattr(self, key)
             self.save()
         except ValueError:
@@ -108,16 +109,22 @@ class Configuration:
         """
         Changes value of attribute <self>.<key> to <value>.
         """
-        if key not in self.atribute_list:
-            self.atribute_list.append(key)
+        if key not in self.attribute_list:
+            self.attribute_list.append(key)
         setattr(self, key, value)
         self.save()
 
+    def __str__(self):
+        return self.attribute_list
 
-def get_ms_untill_alarm(wake_time, wake_period):
-    ms_to_alarm = utime.localtime()
 
-timer = machine.Timer(0)
-timer.init(10000)
-timer.deinit()
+def get_time_untill_alarm(wake_time=None, wake_period=None):
+    current_time = utime.localtime()
+    current_hour, current_minute, current_second = current_time[3:5]
+    wake_time["hour"], wake_time["minute"]
+
+
+# timer = machine.Timer(0)
+# timer.init(10000)
+# timer.deinit()
 

@@ -3,5 +3,6 @@
     "hour": 6,
     "minute": 0
   },
-  "wake_duration": 30
+  "wake_duration": 30,
+  "modes": ["wake_up", "wake_up_2", "wake_up_3", "wake_up_4", "wake_up_5"]
 }

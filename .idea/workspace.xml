@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28402e77-81de-422b-a68c-1876b531d0ea" name="Changes" comment="Main loop&#10;Basic wi-fi, RTC functionalities.">
-      <change afterPath="$PROJECT_DIR$/ESP_filestructure/LampModes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ESP_filestructure/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ESP_filestructure/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/ESP_filestructure/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ESP_filestructure/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/ESP_filestructure/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ESP_filestructure/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ESP_filestructure/main.py" afterDir="false" />
     </list>
@@ -157,6 +156,8 @@
       <workItem from="1630137170311" duration="5787000" />
       <workItem from="1630151695437" duration="22898000" />
       <workItem from="1630265419205" duration="5491000" />
+      <workItem from="1630331478253" duration="6579000" />
+      <workItem from="1630347460499" duration="534000" />
     </task>
     <task id="LOCAL-00001" summary="Micropython file structure">
       <created>1630137539112</created>
