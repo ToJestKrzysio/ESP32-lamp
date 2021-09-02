@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="28402e77-81de-422b-a68c-1876b531d0ea" name="Changes" comment="Main loop&#10;Basic wi-fi, RTC functionalities.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ESP_filestructure/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/ESP_filestructure/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ESP_filestructure/LampModes.py" beforeDir="false" afterPath="$PROJECT_DIR$/ESP_filestructure/LampModes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ESP_filestructure/config.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ESP_filestructure/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/ESP_filestructure/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ESP_filestructure/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ESP_filestructure/main.py" afterDir="false" />
     </list>
@@ -54,6 +55,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Python_projects\ESP32-lamp\ESP_filestructure" />
       <recent name="C:\Python_projects\ESP32-lamp" />
     </key>
   </component>
@@ -158,6 +160,9 @@
       <workItem from="1630265419205" duration="5491000" />
       <workItem from="1630331478253" duration="6579000" />
       <workItem from="1630347460499" duration="534000" />
+      <workItem from="1630512347471" duration="12753000" />
+      <workItem from="1630576458588" duration="8471000" />
+      <workItem from="1630591563589" duration="704000" />
     </task>
     <task id="LOCAL-00001" summary="Micropython file structure">
       <created>1630137539112</created>

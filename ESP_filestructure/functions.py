@@ -4,6 +4,7 @@ import machine
 import ntptime
 import utime
 import json
+import uasyncio
 
 from constants import SSID, PSWD
 
@@ -42,7 +43,7 @@ class TimeUpdater:
             self.completed = True
 
 
-def transform_bytearray(color_array: bytearray, goal_array: bytearray, number_of_steps = 50) -> None:
+def transform_bytearray(color_array: bytearray, goal_array: bytearray, number_of_steps = 50) -> bytearray:
     current_step = 0
     difference = tuple(map(lambda x, y: (x - y) / number_of_steps, goal_array, color_array))
     while current_step < number_of_steps:
@@ -65,7 +66,7 @@ class Configuration:
 
     def load(self):
         """
-        Loads configuration from config.json file.
+        Loads configuration from configuration.json file.
         """
         with open(self._filename, "r") as file_:
             config_dict = json.load(file_)
@@ -77,7 +78,7 @@ class Configuration:
 
     def save(self):
         """
-        Saves configuration to a config.json file.
+        Saves configuration to a configuration.json file.
         """
         config_dict = {}
         for key in self.attribute_list:
@@ -114,17 +115,47 @@ class Configuration:
         setattr(self, key, value)
         self.save()
 
+    # TODO list all atributes properly
     def __str__(self):
         return self.attribute_list
 
 
-def get_time_untill_alarm(wake_time=None, wake_period=None):
-    current_time = utime.localtime()
-    current_hour, current_minute, current_second = current_time[3:5]
-    wake_time["hour"], wake_time["minute"]
+def time_to_ms(hours=0, minutes=0, seconds=0, ms=0):
+    return hours * 3_600_000 + minutes * 60_000 + seconds * 1_000 + ms
+
+def get_ms_to_alarm(alarm_time: dict, trigger_period=30) -> int:
+    current_time = time_to_ms(utime.localtime()[3:6])
+    wake_time = time_to_ms(alarm_time["hour"], alarm_time["minute"])
+    ms_to_alram = wake_time - current_time
+    return ms_to_alram if ms_to_alram >= 0 else 86400000 + ms_to_alram
 
 
-# timer = machine.Timer(0)
-# timer.init(10000)
-# timer.deinit()
+class LampModes:
+
+    @staticmethod
+    def wake_up(self, color_array):
+        iterators = [
+            transform_bytearray(color_array=color_array, goal_array=bytearray([64, 32, 32]), number_of_steps=100),
+            transform_bytearray(color_array=color_array, goal_array=bytearray([128, 128, 128]), number_of_steps=100),
+        ]
+        final_list = []
+        [final_list.extend(list(iterator)) for iterator in iterators]
+        return (step for step in final_list)
+
+    @staticmethod
+    def red(color_array):
+        return transform_bytearray(color_array=color_array, goal_array=bytearray([64, 0, 0]), number_of_steps=50)
+
+    @staticmethod
+    def green(color_array):
+        return transform_bytearray(color_array=color_array, goal_array=bytearray([0, 64, 0]), number_of_steps=50)
+
+    @staticmethod
+    def blue(color_array):
+        return transform_bytearray(color_array=color_array, goal_array=bytearray([0, 0, 64]), number_of_steps=50)
+
+    @staticmethod
+    def white(color_array):
+        return transform_bytearray(color_array=color_array, goal_array=bytearray([64, 64, 64]), number_of_steps=50)
+
 
